@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import useWebSocket from "react-use-websocket"
+import useWebSocket, { ReadyState } from "react-use-websocket"
 import { updateRecord, formatReturnData } from "./helpers"
 
 export interface PriceSizeObject {
@@ -12,6 +12,7 @@ export type DisplayPriceSizeArray = [number, number, number][]
 
 interface useXBTUSDType {
   loading: boolean
+  error?: string
   data: {
     bids: DisplayPriceSizeArray
     asks: DisplayPriceSizeArray
@@ -23,7 +24,27 @@ const PRODUCT_ID = "PI_XBTUSD"
 const usePI_XBTUSD = (): useXBTUSDType => {
   const [current, setCurrent] = useState({ bids: {}, asks: {} })
   const [loading, setLoading] = useState(true)
-  const { sendJsonMessage, lastMessage } = useWebSocket("wss://www.cryptofacilities.com/ws/v1")
+  const [error, setError] = useState<string>()
+
+  const { sendJsonMessage, lastMessage, readyState } = useWebSocket(
+    "wss://www.cryptofacilities.com/ws/v1",
+    {
+      onError: (event: WebSocketEventMap["error"]) => {
+        if (event.type === "error") {
+          setError("Something went wrong")
+        }
+      },
+      shouldReconnect: () => true,
+    },
+  )
+
+  const connectionStatus = {
+    [ReadyState.CONNECTING]: "Connecting",
+    [ReadyState.OPEN]: "Open",
+    [ReadyState.CLOSING]: "Closing",
+    [ReadyState.CLOSED]: "Closed",
+    [ReadyState.UNINSTANTIATED]: "Uninstantiated",
+  }[readyState]
 
   useEffect(
     () =>
@@ -36,17 +57,22 @@ const usePI_XBTUSD = (): useXBTUSDType => {
   )
 
   useEffect(() => {
+    if (connectionStatus !== "Open") {
+      setLoading(true)
+    }
+  }, [connectionStatus])
+
+  useEffect(() => {
     const data = lastMessage && JSON.parse(lastMessage.data)
 
     if (!data) {
       return
     }
 
-    if (data.event === "subscribed") {
-      setLoading(false)
-    }
-
     if (data.product_id === PRODUCT_ID) {
+      setLoading(false)
+      setError("")
+
       setCurrent({
         asks: updateRecord(data.asks, current.asks),
         bids: updateRecord(data.bids, current.bids),
@@ -56,6 +82,7 @@ const usePI_XBTUSD = (): useXBTUSDType => {
 
   return {
     loading,
+    error,
     data: {
       bids: formatReturnData(current.bids, false),
       asks: formatReturnData(current.asks),

@@ -4,9 +4,12 @@
   "repository": "git@github.com:mateuszmolkaofficial/matty-coin.git",
   "author": "mateuszmolkaofficial <molkamateuszjanusz@gmail.com>",
   "scripts": {
+    "initNpm": "npm install && next dev",
+    "initYarn": "yarn install && next dev",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest --watchAll"
   },
   "dependencies": {
     "capsize": "^2.0.0",
