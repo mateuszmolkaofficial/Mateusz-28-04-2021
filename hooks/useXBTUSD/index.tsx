@@ -21,7 +21,7 @@ interface useXBTUSDType {
 
 const PRODUCT_ID = "PI_XBTUSD"
 
-const usePI_XBTUSD = (): useXBTUSDType => {
+const useXBTUSD = (): useXBTUSDType => {
   const [current, setCurrent] = useState({ bids: {}, asks: {} })
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string>()
@@ -90,4 +90,4 @@ const usePI_XBTUSD = (): useXBTUSDType => {
   }
 }
 
-export default usePI_XBTUSD
+export default useXBTUSD

@@ -15,7 +15,7 @@ export const TableWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: 100%;
-  padding-right: ${spacing(3)}px;
+  padding-right: ${spacing(6)}px;
   position: relative;
 `
 
