@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import { DisplayPriceSizeArray } from "hooks/useXBTUSD"
-import { roundNumber } from "utils"
+import { roundNumber } from "utils/utils"
 import { first, max, last } from "lodash/fp"
 import {
   SectionWrapper,

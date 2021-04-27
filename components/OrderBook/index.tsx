@@ -2,18 +2,19 @@ import React from "react"
 import useXBTUSD from "hooks/useXBTUSD"
 import Loader from "react-loader-spinner"
 import { last, first, isEmpty } from "lodash/fp"
-import { roundNumber } from "utils"
+import { roundNumber } from "utils/utils"
 import { Wrapper, ContentWrapper, LoaderWrapper, SpreadWrapper, Error } from "./styles"
 import Table from "./components/Table"
 
 const OrderBook = () => {
   const { loading, data, error } = useXBTUSD()
+
   const asks = data && data.asks
   const bids = data && data.bids
 
   return (
     <Wrapper>
-      {loading ? (
+      {loading || error ? (
         <LoaderWrapper>
           <Loader type="Audio" color="#2BBAA5" height={100} width={100} />
           {error && (

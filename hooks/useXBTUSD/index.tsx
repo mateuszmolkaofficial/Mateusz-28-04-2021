@@ -10,7 +10,7 @@ export type PriceSizeArray = [number, number][]
 
 export type DisplayPriceSizeArray = [number, number, number][]
 
-interface useXBTUSDType {
+export interface UseXBTUSDReturnType {
   loading: boolean
   error?: string
   data: {
@@ -21,7 +21,7 @@ interface useXBTUSDType {
 
 const PRODUCT_ID = "PI_XBTUSD"
 
-const useXBTUSD = (): useXBTUSDType => {
+const useXBTUSD = (): UseXBTUSDReturnType => {
   const [current, setCurrent] = useState({ bids: {}, asks: {} })
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string>()
