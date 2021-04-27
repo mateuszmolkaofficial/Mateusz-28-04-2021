@@ -15,7 +15,7 @@ export const TableWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: 100%;
-  padding: 0 ${spacing(3)}px;
+  padding-right: ${spacing(3)}px;
   position: relative;
 `
 
@@ -26,12 +26,6 @@ const colorIn = keyframes`
 
 export const ContentTableWrapper = styled(TableWrapper)`
   animation: 0.4s ${colorIn};
-  color: ${color("white")};
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: 100%;
-  padding: 0 ${spacing(3)}px;
-  position: relative;
 `
 
 export const Pill = styled.div`
