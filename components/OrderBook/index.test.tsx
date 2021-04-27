@@ -47,13 +47,13 @@ describe("OrderBook", () => {
 
   it("should show ContentWrapper, Tables and SpreadWrapper", () => {
     const mockBids: DisplayPriceSizeArray = [
-      [faker.random.number(), faker.random.number(), faker.random.number()],
-      [faker.random.number(), faker.random.number(), faker.random.number()],
+      [faker.datatype.number(), faker.datatype.number(), faker.datatype.number()],
+      [faker.datatype.number(), faker.datatype.number(), faker.datatype.number()],
     ]
 
     const mockAsks: DisplayPriceSizeArray = [
-      [faker.random.number(), faker.random.number(), faker.random.number()],
-      [faker.random.number(), faker.random.number(), faker.random.number()],
+      [faker.datatype.number(), faker.datatype.number(), faker.datatype.number()],
+      [faker.datatype.number(), faker.datatype.number(), faker.datatype.number()],
     ]
 
     mockUseXBTUSD.mockReturnValue({
