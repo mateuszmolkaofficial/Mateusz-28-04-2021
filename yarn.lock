@@ -722,6 +722,11 @@ caniuse-lite@^1.0.30001173, caniuse-lite@^1.0.30001179:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001214.tgz#70f153c78223515c6d37a9fde6cd69250da9d872"
   integrity sha512-O2/SCpuaU3eASWVaesQirZv1MSjUNOvmugaD8zNSJqw6Vv5SGwoOpA9LJs3pNPfM745nxqPvfZY3MQKY4AKHYg==
 
+capsize@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/capsize/-/capsize-2.0.0.tgz#09c440000d6c6c9da2c22b419b6ced1b74a1b29d"
+  integrity sha512-/xluZJe+SnuByQjws/B6QkrMzo9OqE9sd+k6paTxYoVVZLrwZoPdsCRasPiCIUQMy8UD11xgo5QZ/gtcNMlGlQ==
+
 chalk@2.4.2, chalk@^2.0.0, chalk@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"

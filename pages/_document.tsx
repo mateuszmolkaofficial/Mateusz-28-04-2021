@@ -24,7 +24,7 @@ export default class MyDocument extends Document<{ styleTags: string }> {
         <Head>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;500;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700&display=swap"
             rel="stylesheet"
           />
           {/* Step 5: Output the styles in the head  */}

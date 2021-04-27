@@ -1,15 +1,15 @@
 import styled from "styled-components"
-import { color, spacing, borderRadius } from "styles/accessors"
+import { color, spacing, borderRadius, typography } from "styles/accessors"
 
 export const Wrapper = styled.div`
   background-color: ${color("grey")};
-  padding: ${spacing(3)}px 0;
   border-radius: ${borderRadius("big")};
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 400px;
-  height: 350px;
+  height: 440px;
   border: 1px solid ${color("lightGrey")};
 `
 
@@ -24,6 +24,7 @@ export const ContentWrapper = styled.div`
 `
 
 export const SectionWrapper = styled.section`
+  padding-top: ${spacing(1)}px;
   margin-bottom: ${spacing(2)}px;
 
   &:last-child {
@@ -38,13 +39,28 @@ export const TableWrapper = styled.div`
   width: 100%;
   padding: 0 ${spacing(3)}px;
   position: relative;
-  overflow: hidden;
 `
 
 export const Pill = styled.div`
+  ${typography("body0")}
   text-align: right;
   color: ${color("white")};
   z-index: 1;
+  padding: ${spacing(1)}px 0;
+  cursor: pointer;
+
+  &:hover {
+    ${typography("body0bold")};
+  }
+`
+
+export const InfoPill = styled(Pill)`
+  color: ${color("lightGrey")};
+  padding-bottom: ${spacing(2)}px;
+
+  &:hover {
+    ${typography("body0")};
+  }
 `
 
 export const AskPricePill = styled(Pill)`
@@ -75,4 +91,14 @@ export const AskMask = styled.div.attrs((props: AskMaskProps) => ({
 
 export const BidMask = styled(AskMask)`
   background-color: ${color("green")};
+`
+
+export const SpreadWrapper = styled.div`
+  ${typography("body1bold")};
+  border-top: 1px solid ${color("lightGrey")};
+  border-bottom: 1px solid ${color("lightGrey")};
+  width: 100%;
+  padding: ${spacing(2)}px 0;
+  color: ${color("white")};
+  text-align: center;
 `

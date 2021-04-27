@@ -1,7 +1,8 @@
 import React from "react"
 import useXBTUSD from "hooks/useXBTUSD"
 import Loader from "react-loader-spinner"
-import { last, first, max } from "lodash/fp"
+import { last, first, max, isEmpty } from "lodash/fp"
+import { roundNumber } from "utils"
 import {
   Wrapper,
   TableWrapper,
@@ -10,9 +11,11 @@ import {
   AskPricePill,
   BidPricePill,
   Pill,
+  InfoPill,
   SectionWrapper,
   AskMask,
   BidMask,
+  SpreadWrapper,
 } from "./styles"
 
 const OrderBook = () => {
@@ -30,29 +33,32 @@ const OrderBook = () => {
         <ContentWrapper>
           <SectionWrapper>
             <TableWrapper>
-              <Pill>Price</Pill>
-              <Pill>Size</Pill>
-              <Pill>Total</Pill>
-              <AskMask width={100} />
+              <InfoPill>Price</InfoPill>
+              <InfoPill>Size</InfoPill>
+              <InfoPill>Total</InfoPill>
             </TableWrapper>
             {asks.map(ask => (
               <TableWrapper key={ask[0]}>
-                <AskPricePill>{ask[0]}</AskPricePill>
+                <AskPricePill>{roundNumber(ask[0], 2)}</AskPricePill>
                 <Pill>{ask[1]}</Pill>
                 <Pill>{ask[2]}</Pill>
                 <AskMask width={(ask[2] / max([first(asks)[2], 100000])) * 100} />
               </TableWrapper>
             ))}
           </SectionWrapper>
+          <SpreadWrapper>
+            Spread:{" "}
+            {!isEmpty(asks) && !isEmpty(bids) && roundNumber(last(asks)[0] - first(bids)[0], 2)}
+          </SpreadWrapper>
           <SectionWrapper>
             <TableWrapper>
-              <Pill>Price</Pill>
-              <Pill>Size</Pill>
-              <Pill>Total</Pill>
+              <InfoPill>Price</InfoPill>
+              <InfoPill>Size</InfoPill>
+              <InfoPill>Total</InfoPill>
             </TableWrapper>
             {bids.map(bid => (
               <TableWrapper key={bid[0]}>
-                <BidPricePill>{bid[0]}</BidPricePill>
+                <BidPricePill>{roundNumber(bid[0], 2)}</BidPricePill>
                 <Pill>{bid[1]}</Pill>
                 <Pill>{bid[2]}</Pill>
                 <BidMask width={(bid[2] / max([last(bids)[2], 100000])) * 100} />

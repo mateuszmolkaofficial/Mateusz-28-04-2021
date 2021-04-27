@@ -26,3 +26,11 @@ export const borderRadius = curry(
 export const spacing = curry(
   (key: number, props: StyledComponentsProps): number => props.theme.spacing[key],
 )
+
+/**
+ * Typography accessor
+ */
+export const typography = curry(
+  (key: keyof ThemeType["typography"], props: StyledComponentsProps): CSSObject =>
+    props.theme.typography[key],
+)

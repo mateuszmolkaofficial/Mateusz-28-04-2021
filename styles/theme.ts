@@ -1,3 +1,5 @@
+import { typography } from "styles/typography"
+
 const theme = {
   colors: {
     green: "#2BBAA5",
@@ -16,6 +18,7 @@ const theme = {
     medium: "20px",
     big: "30px",
   },
+  typography,
   spacing: Array.from(Array(50).keys()).reduce(
     (accumulator, currentValue) => ({ ...accumulator, [currentValue]: currentValue * 8 }),
     {},

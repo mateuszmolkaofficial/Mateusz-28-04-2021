@@ -22,6 +22,8 @@ export const formatReturnData = (
   showLast = true,
   size = 5,
 ): DisplayPriceSizeArray => {
+  // I do not use lodash in this function for performance reasons
+
   let lastTotal = 0
   const mapTotal = item => {
     if (lastTotal) {
