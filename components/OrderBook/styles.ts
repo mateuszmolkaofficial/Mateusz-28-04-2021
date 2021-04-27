@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import { color, spacing, borderRadius, typography } from "styles/accessors"
 
 export const Wrapper = styled.div`
@@ -32,7 +32,13 @@ export const SectionWrapper = styled.section`
   }
 `
 
+const colorIn = keyframes`
+  from {background-color:rgba(211,211,211, 0.3);}
+    to {background-color:rgba(242, 245, 169, 0);}
+`
+
 export const TableWrapper = styled.div`
+  animation: 0.4s ${colorIn};
   color: ${color("white")};
   display: grid;
   grid-template-columns: repeat(3, 1fr);
