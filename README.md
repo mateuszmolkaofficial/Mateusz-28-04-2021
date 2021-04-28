@@ -35,3 +35,7 @@ In order to run unit tests for this project run:
 ```
 $ yarn test
 ```
+
+```
+$ npm test
+```
