@@ -44,6 +44,12 @@ So far I haven't had to track down a performace issue in prod, I'm hoping it's b
 
 ## 5. Can you describe common security concerns to consider for a frontend developer?
 
+* Man in the middle attack - we can prevent that by using https instead of http. Then the man in the middle will see cyphered requests.
+
+* Cross-Site Request Forgery - attack where hacker tricked our user to enter their website which will probably be styled identically as ours in order to steal some data/do some malitious actions. Since our user is logged in, a cookie is in the browser so it's reachable from all websites open. We can prevent bad things from happening by setting cookie `sameSite` property to `lax` or `strict`. See more `https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite`.
+
+* Cross-Site Scripting - attack where a malicious code is injected into our app and for example attempts to steal our cookie. This can be prevented by setting `httpOnly` flag to `true`. This would make cookies inaccessible from JS. It is also a good practise to sanitize all of the inputs in the app and setting Content-Security-Policy headers.
+
 ## 6. How would you improve the K****N API that you just used?
 
 I'd say the API itself isn't bad, but not sure if it would be better to perform the logic of handling updates on the server due to server's operational capabilities (which are way higher than browser's) and sending 'ready-to-display' data to the frontend. With this we could avoid performing the sorting/filtering on the browser. Also it would be good to be able to fetch certain amount of records from the server, since in my app I only show 5 of bids/asks and I am aware that the object I'm taking these records can grow to like ~100 records, which is a waste of browser's recources.
