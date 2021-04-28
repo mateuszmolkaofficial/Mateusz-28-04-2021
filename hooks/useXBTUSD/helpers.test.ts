@@ -47,10 +47,10 @@ describe("useXBTUSD helpers", () => {
 
   describe("compare", () => {
     it("should compare two numbers", () => {
-      const item1: PriceSizeArray = [[faker.datatype.number(), faker.datatype.number()]]
-      const item2: PriceSizeArray = [[faker.datatype.number(), faker.datatype.number()]]
+      const item1: [number, number] = [faker.datatype.number(), faker.datatype.number()]
+      const item2: [number, number] = [faker.datatype.number(), faker.datatype.number()]
 
-      expect(compare(item1, item2)).toEqual(item1[0][0] - item2[0][0])
+      expect(compare(item1, item2)).toEqual(item1[0] - item2[0])
     })
   })
 

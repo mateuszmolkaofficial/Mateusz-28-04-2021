@@ -15,7 +15,7 @@ export const updateRecord = (update: PriceSizeArray, current: PriceSizeObject) =
   return current
 }
 
-export const compare = (a: PriceSizeArray, b: PriceSizeArray) => Number(a[0][0]) - Number(b[0][0])
+export const compare = (a: [number, number], b: [number, number]) => Number(a[0]) - Number(b[0])
 
 export const formatReturnData = (
   data: PriceSizeObject,
